@@ -1,10 +1,12 @@
+package Chapter_03_SourceCode;
+
 import javax.swing.JOptionPane;  // Needed for JOptionPane class
 
 /**
-   This program demonstrates a nested if statement.
+   This program demonstrates the logical || operator.
 */
 
-public class LoanQualifier
+public class LogicalOr
 {
    public static void main(String[] args)
    {
@@ -23,24 +25,15 @@ public class LoanQualifier
       yearsOnJob = Double.parseDouble(input);
 
       // Determine whether the user qualifies for the loan.
-      if (salary >= 30000)
+      if (salary >= 30000 || yearsOnJob >= 2)
       {
-         if (yearsOnJob >= 2)
-         {
             JOptionPane.showMessageDialog(null, "You qualify " +
                                                "for the loan.");
-         }
-         else
-         {
-            JOptionPane.showMessageDialog(null, "You must have " +
-                        "been on your current job for at least " + 
-                        "two years to qualify.");
-         }
       }
       else
       {
-            JOptionPane.showMessageDialog(null, "You must earn " +
-                         "at least $30,000 per year to qualify.");
+            JOptionPane.showMessageDialog(null, "You do not " +
+                                      "qualify for the loan.");
       }
       
       System.exit(0);

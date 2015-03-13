@@ -1,3 +1,5 @@
+package Chapter_03_SourceCode;
+
 /**
    This program incorrectly uses the == operator to compare
    two String objects. The comparison does not work.

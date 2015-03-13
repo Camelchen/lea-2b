@@ -1,3 +1,5 @@
+package Chapter_03_SourceCode;
+
 import javax.swing.JOptionPane;  // Needed for JOptionPane
 
 /**
@@ -50,5 +52,6 @@ public class NestedDecision
          }
          
       System.exit(0);
+      }
    }
 }
