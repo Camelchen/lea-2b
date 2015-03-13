@@ -1,0 +1,10 @@
+awk 'BEGIN {
+	{print "\t\t Student at Vanier\n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "Student LName\t\t\t Student FName\n"}
+	{print "==============================================="}
+	}
+	{printf " %-8s\t\t\t %s\n",$2,$3}' student
+
+ 

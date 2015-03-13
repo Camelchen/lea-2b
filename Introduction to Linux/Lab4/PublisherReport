@@ -1,0 +1,9 @@
+awk 'BEGIN {
+	{print "\t\t Publisher at Vanier\n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "Publisher ID\tPublisher Name\t\t\tPublisher Address\n"}
+	{print "=========================================================================="}
+	}
+	{printf " %s\t\t%-8s\t\t%s\n",$1,$2,$3}' publisher
+ 

@@ -1,0 +1,9 @@
+awk 'BEGIN {
+	{print "\t\t List of Books\n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "Book ID\tBook Author\t\tBook Titile\t\tBook Price\n"}
+	{print "=========================================================================="}
+	}
+	{printf " %s\t%-8s\t\t%-16s\t%-8s\n",$1,$2,$3,$4}' books
+ 

@@ -1,0 +1,10 @@
+sort -k5 student > studentSorted
+join -1 5 -2 1 studentSorted faculty > stufac
+awk 'BEGIN {
+	{print "\t\t Students and Their Supervisors at Vanier\n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "StudentLName\tStudent FName\t\tFaculty LName\n"}
+	{print "========================================================"}
+	}
+	{printf " %-8s\t\t%-8s\t\t%-8s\n",$3,$4,$6}' stufac

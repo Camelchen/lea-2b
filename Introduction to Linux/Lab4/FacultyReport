@@ -1,0 +1,9 @@
+awk 'BEGIN {
+	{print "\t\t Faculty at Vanier\n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "FacultyID\tFaculty LName\t\tFaculty FName\n"}
+	{print "========================================================"}
+	}
+	{printf " %s\t\t%-10s\t\t%s\n",$1,$2,$3}' faculty
+ 

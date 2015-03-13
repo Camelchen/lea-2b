@@ -1,0 +1,9 @@
+echo -n 'Enter your First Number: '
+read num1
+
+echo -n 'Enter your Second Number: '
+read num2
+
+let sub=num1-num2
+
+echo 'The result of Substraction '$num1' and '$num2' is '$sub

@@ -1,0 +1,13 @@
+sort -k1 student > studentSorted
+sort -k1 enrollment > enrollmentSorted
+join -1 1 -2 1 studentSorted enrollmentSorted > stuenr
+
+awk 'BEGIN {
+	{print "\t\t Students and Their Marks at Vanier\n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "StudentLName\tStudent FName\t\tCourseNum\tGrade\n"}
+	{print "============================================================="}
+	}
+	{printf " %-8s\t%-8s\t\t%s%-8s\t%s \n",$2,$3,$6,$7,$8}' stuenr
+ 

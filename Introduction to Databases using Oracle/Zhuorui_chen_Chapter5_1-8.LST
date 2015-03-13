@@ -1,0 +1,123 @@
+--Q1:
+SQL> select lname||', '||fname as Employee_Name, salary as Salary from employee;
+
+EMPLOYEE_NAME                        SALARY                                     
+-------------------------------- ----------                                     
+Smith, John                          265000                                     
+Houston, Larry                       150000                                     
+Roberts, Sandi                        75000                                     
+McCall, Alex                          66500                                     
+Dev, Derek                            80000                                     
+Shaw, Jinku                           24500                                     
+Garner, Stanley                       45000                                     
+Chen, Sunny                           35000                                     
+
+8 rows selected.
+
+SQL> 
+SQL> --Q2:
+SQL> select * from employee where commission is null;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE       
+---------- --------------- --------------- ---------- ---------- ---------      
+    SALARY COMMISSION     DEPTID     QUALID                                     
+---------- ---------- ---------- ----------                                     
+       123 Roberts         Sandi                    2        111 02-DEC-91      
+     75000                    10          2                                     
+                                                                                
+       433 McCall          Alex                     3        543 10-MAY-97      
+     66500                    20          4                                     
+                                                                                
+       222 Chen            Sunny                    4        123 15-AUG-99      
+     35000                    10          3                                     
+                                                                                
+
+SQL> 
+SQL> --Q3:
+SQL> select unique building from location;
+
+BUILDIN                                                                         
+-------                                                                         
+Gandhi                                                                          
+Kennedy                                                                         
+Nehru                                                                           
+
+SQL> 
+SQL> --Q4:
+SQL> select * from crssection where termid = (select termid from term where termdesc = 'Winter 2003');
+
+      CSID COURSE SE TERM  FACULTYID DA START ENDTI     ROOMID   MAXCOUNT       
+---------- ------ -- ---- ---------- -- ----- ----- ---------- ----------       
+      1101 CIS265 01 WN03        111 MW 09:00 10:30         13         30       
+      1102 CIS253 01 WN03        123 TR 09:00 10:30         18         40       
+      1103 MA150  02 WN03        444 F  09:00 12:00         15         25       
+      1104 AC101  10 WN03        345 MW 10:30 12:00         16         35       
+
+SQL> 
+SQL> --Q5:
+SQL> select Name as Faculty_Name from faculty where deptid in (1,2);
+
+FACULTY_NAME                                                                    
+---------------                                                                 
+Jones                                                                           
+Williams                                                                        
+Mobley                                                                          
+Vajpayee                                                                        
+
+SQL> 
+SQL> --Q6:
+SQL> select * from student where State in ('NJ','NY');
+
+STUDE LAST            FIRST           STREET                    CITY            
+----- --------------- --------------- ------------------------- --------------- 
+ST ZIP   STAR BIRTHDATE  FACULTYID    MAJORID PHONE                             
+-- ----- ---- --------- ---------- ---------- ----------                        
+00100 Diaz            Jose            1 Ford Avenue #7          Hill            
+NJ 08863 WN03 12-FEB-83        123        100 9735551111                        
+                                                                                
+00101 Tyler           Mickey          12 Morris Avenue          Bronx           
+NY 10468 SP03 18-MAR-84        555        500 7185552222                        
+                                                                                
+00102 Patel           Rajesh          25 River Road #3          Edison          
+NJ 08837 WN03 12-DEC-85        111        400 7325553333                        
+                                                                                
+
+STUDE LAST            FIRST           STREET                    CITY            
+----- --------------- --------------- ------------------------- --------------- 
+ST ZIP   STAR BIRTHDATE  FACULTYID    MAJORID PHONE                             
+-- ----- ---- --------- ---------- ---------- ----------                        
+00103 Rickles         Deborah         100 Main Street           Iselin          
+NJ 08838 FL02 20-OCT-70        555        500 7325554444                        
+                                                                                
+00104 Lee             Brian           2845 First Lane           Hope            
+NY 11373 WN03 28-NOV-85        345        600 2125555555                        
+                                                                                
+00105 Khan            Amir            213 Broadway              Clifton         
+NJ 07222 WN03 07-JUL-84        222        200 2015556666                        
+                                                                                
+
+6 rows selected.
+
+SQL> --Q7:
+SQL> select salary, salary*1.1 as Raised_Salary from employee where employeeId = 111;
+
+    SALARY RAISED_SALARY                                                        
+---------- -------------                                                        
+    265000        291500                                                        
+
+SQL> update employee set salary = salary*1.1 where employeeid = 111;
+
+1 row updated.
+
+SQL> select salary, salary/1.1 as Original_Salary from employee where employeeId = 111;
+
+    SALARY ORIGINAL_SALARY                                                      
+---------- ---------------                                                      
+    291500          265000                                                      
+
+SQL> --Q8:
+SQL> delete department where deptid = 30;
+
+0 rows deleted.
+
+SQL> 

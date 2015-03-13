@@ -1,0 +1,9 @@
+echo -n " Enter the name "
+read NAME
+
+if [ "$NAME" = "VANIER" ]
+then
+echo "It is about College Vanier"
+else
+echo "It is about Company Makivik"
+fi

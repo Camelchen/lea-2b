@@ -1,0 +1,15 @@
+sort -k1 student > studentSorted
+sort -k1 enrollment > enrollmentSorted
+join -1 1 -2 1  studentSorted enrollmentSorted > stuenr
+sort -k5 stuenr > stuenrSorted
+sort -k1 faculty > facultySorted
+join -1 5 -2 1 stuenrSorted  facultySorted > stuenrfac
+awk 'BEGIN {
+	{print "\t\t Students and Their Marks, with Name of their Supervisors at Vanier\n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "StudentLName\tStudent FName\t\tCourseNum\tGrade\tFacLName\tFacFName\n"}
+	{print "==============================================================================================="}
+	}
+	{printf " %-8s\t%-8s\t\t%s%-8s\t%s \t%-8s\t%-8s\n",$2,$3,$6,$7,$8,$9,$10}' stuenrfac
+ 
