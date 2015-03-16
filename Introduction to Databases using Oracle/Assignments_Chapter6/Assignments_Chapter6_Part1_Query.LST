@@ -1,0 +1,119 @@
+--Q1
+SQL> COLUMN Salary FORMAT $9,999,999.99;
+SQL> SELECT INITCAP(lname)||', '||INITCAP(fname) as FullName, Salary FROM employee;
+
+FULLNAME                                 SALARY                                 
+-------------------------------- --------------                                 
+Smith, John                         $265,000.00                                 
+Houston, Larry                      $150,000.00                                 
+Roberts, Sandi                       $75,000.00                                 
+Mccall, Alex                         $66,500.00                                 
+Dev, Derek                           $80,000.00                                 
+Shaw, Jinku                          $24,500.00                                 
+Garner, Stanley                      $45,000.00                                 
+Chen, Sunny                          $35,000.00                                 
+
+8 rows selected.
+
+SQL> 
+SQL> --Q5
+SQL> SELECT last||', '||first as FullName, EXTRACT(DAY FROM birthdate)||' '||TRIM(' ' FROM TO_CHAR(birthdate,'MONTH'))||','||EXTRACT(YEAR FROM birthdate) AS Birthdate FROM student;
+
+FULLNAME                                                                        
+--------------------------------                                                
+BIRTHDATE                                                                       
+--------------------------------------------------------------------------------
+Diaz, Jose                                                                      
+12 FEBRUARY,1983                                                                
+                                                                                
+Tyler, Mickey                                                                   
+18 MARCH,1984                                                                   
+                                                                                
+Patel, Rajesh                                                                   
+12 DECEMBER,1985                                                                
+                                                                                
+
+FULLNAME                                                                        
+--------------------------------                                                
+BIRTHDATE                                                                       
+--------------------------------------------------------------------------------
+Rickles, Deborah                                                                
+20 OCTOBER,1970                                                                 
+                                                                                
+Lee, Brian                                                                      
+28 NOVEMBER,1985                                                                
+                                                                                
+Khan, Amir                                                                      
+7 JULY,1984                                                                     
+                                                                                
+
+6 rows selected.
+
+SQL> 
+SQL> --Q8
+SQL> SELECT lname||', '||fname as FullName, TO_CHAR(hiredate,'YYYY') AS Hire FROM Employee;
+
+FULLNAME                         HIRE                                           
+-------------------------------- ----                                           
+Smith, John                      1960                                           
+Houston, Larry                   1967                                           
+Roberts, Sandi                   1991                                           
+McCall, Alex                     1997                                           
+Dev, Derek                       1995                                           
+Shaw, Jinku                      2000                                           
+Garner, Stanley                  1996                                           
+Chen, Sunny                      1999                                           
+
+8 rows selected.
+
+SQL> 
+SQL> --Q11
+SQL> SELECT POWER(2,10) FROM DUAL;
+
+POWER(2,10)                                                                     
+-----------                                                                     
+       1024                                                                     
+
+SQL> 
+SQL> --Q15
+SQL> SELECT lname||', '||fname as FullName, TRUNC(MONTHS_BETWEEN (sysdate,hiredate)/12) AS NumberOfYear FROM Employee;
+
+FULLNAME                         NUMBEROFYEAR                                   
+-------------------------------- ------------                                   
+Smith, John                                54                                   
+Houston, Larry                             47                                   
+Roberts, Sandi                             23                                   
+McCall, Alex                               17                                   
+Dev, Derek                                 20                                   
+Shaw, Jinku                                15                                   
+Garner, Stanley                            19                                   
+Chen, Sunny                                15                                   
+
+8 rows selected.
+
+SQL> 
+SQL> --Q16
+SQL> SELECT last||', '||first as FullName, birthdate FROM student WHERE TO_CHAR(birthdate, 'mm') = '05';
+
+no rows selected
+
+SQL> --in the student table, there isn't the student who are born in the month of May
+SQL> 
+SQL> --Q18
+SQL> SELECT lname||', '||fname as FullName,Salary, CASE WHEN Salary>100000 THEN 'HIGH' WHEN Salary BETWEEN 50000 AND 100000 THEN 'MEDIUM' WHEN Salary<50000 THEN 'LOW' END AS SalLvl FROM employee;
+
+FULLNAME                                 SALARY SALLVL                          
+-------------------------------- -------------- ------                          
+Smith, John                         $265,000.00 HIGH                            
+Houston, Larry                      $150,000.00 HIGH                            
+Roberts, Sandi                       $75,000.00 MEDIUM                          
+McCall, Alex                         $66,500.00 MEDIUM                          
+Dev, Derek                           $80,000.00 MEDIUM                          
+Shaw, Jinku                          $24,500.00 LOW                             
+Garner, Stanley                      $45,000.00 LOW                             
+Chen, Sunny                          $35,000.00 LOW                             
+
+8 rows selected.
+
+SQL> 
+SQL> 

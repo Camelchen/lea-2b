@@ -1,0 +1,123 @@
+--Q9
+SQL> SELECT courseid AS course, sum(maxcount) AS maxcount FROM crssectiON GROUP BYcourseid ORDER BY maxcount DESC ;
+SELECT courseid AS course, sum(maxcount) AS maxcount FROM crssectiON GROUP BYcourseid ORDER BY maxcount DESC 
+                                                                           *
+ERROR at line 1:
+ORA-00924: missing BY keyword 
+
+
+SQL> 
+SQL> --Q10
+SQL> INSERT INTO term VALUES ('FL15', 'Fall 2015', '07-SEP-15', '19-DEC-15');
+INSERT INTO term VALUES ('FL15', 'Fall 2015', '07-SEP-15', '19-DEC-15')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.TERM_TERMID_PK) violated 
+
+
+SQL> 
+SQL> --Q11
+SQL> ACCEPT id NUMBER FORMAT '99' PROMPT 'input any value between 50 and 99: ';
+input any value between 50 and 99: 56
+SQL> CREATE TABLE testDept(deptid NUMBER(2),deptname VARCHAR2(20));
+
+Table created.
+
+SQL> INSERT INTO testDept(deptid,deptname) SELECT &id,'test user input' FROM DUAL;
+old   1: INSERT INTO testDept(deptid,deptname) SELECT &id,'test user input' FROM DUAL
+new   1: INSERT INTO testDept(deptid,deptname) SELECT         56,'test user input' FROM DUAL
+
+1 row created.
+
+SQL> SELECT * FROM testDept;
+
+    DEPTID DEPTNAME                                                             
+---------- --------------------                                                 
+        56 test user input                                                      
+
+SQL> DROP TABLE testDept;
+
+Table dropped.
+
+SQL> 
+SQL> --Q12
+SQL> SELECT * FROM course WHERE prereq IS NULL;
+
+COURSE TITLE                   CREDITS PREREQ                                   
+------ -------------------- ---------- ------                                   
+EN100  Basic English                 0                                          
+CIS253 Database Systems              3                                          
+MA150  College Algebra               3                                          
+AC101  Accounting                    3                                          
+
+SQL> 
+SQL> --Q13
+SQL> SELECT name AS Faculty_Name, deptname AS Department_Name FROM faculty LEFT JOIN department ON faculty.deptid = department.deptid
+  2  ORDER BY department.deptname;
+
+FACULTY_NAME    DEPARTMENT_NAME                                                 
+--------------- --------------------                                            
+Collins         Accounting                                                      
+Sen             Accounting                                                      
+Jones           Computer Science                                                
+Mobley          Computer Science                                                
+Chang           Liberal Arts                                                    
+Rivera          Math and Science                                                
+Vajpayee        Telecommunications                                              
+Williams        Telecommunications                                              
+
+8 rows selected.
+
+SQL> 
+SQL> --Q14
+SQL> SELECT * FROM faculty WHERE name LIKE 'C%';
+
+ FACULTYID NAME                ROOMID PHO     DEPTID                            
+---------- --------------- ---------- --- ----------                            
+       555 Chang                   17 587          5                            
+       333 Collins                 17 599          3                            
+
+SQL> 
+SQL> --Q15
+SQL> SELECT * FROM student WHERE startterm LIKE '%03';
+
+STUDE LAST            FIRST           STREET                    CITY            
+----- --------------- --------------- ------------------------- --------------- 
+ST ZIP   STAR BIRTHDATE  FACULTYID    MAJORID PHONE                             
+-- ----- ---- --------- ---------- ---------- ----------                        
+00100 Diaz            Jose            1 Ford Avenue #7          Hill            
+NJ 08863 WN03 12-FEB-83        123        100 9735551111                        
+                                                                                
+00101 Tyler           Mickey          12 Morris Avenue          Bronx           
+NY 10468 SP03 18-MAR-84        555        500 7185552222                        
+                                                                                
+00102 Patel           Rajesh          25 River Road #3          Edison          
+NJ 08837 WN03 12-DEC-85        111        400 7325553333                        
+                                                                                
+
+STUDE LAST            FIRST           STREET                    CITY            
+----- --------------- --------------- ------------------------- --------------- 
+ST ZIP   STAR BIRTHDATE  FACULTYID    MAJORID PHONE                             
+-- ----- ---- --------- ---------- ---------- ----------                        
+00104 Lee             Brian           2845 First Lane           Hope            
+NY 11373 WN03 28-NOV-85        345        600 2125555555                        
+                                                                                
+00105 Khan            Amir            213 Broadway              Clifton         
+NJ 07222 WN03 07-JUL-84        222        200 2015556666                        
+                                                                                
+
+SQL> 
+SQL> --Q16
+SQL> COLUMN deptname FORMAT A30;
+SQL> COLUMN deptid FORMAT 9,999.99;
+SQL> SELECT * FROM department;
+
+   DEPTID DEPTNAME                        FACULTYID                             
+--------- ------------------------------ ----------                             
+     1.00 Computer Science                      111                             
+     2.00 Telecommunications                    222                             
+     3.00 Accounting                            333                             
+     4.00 Math and Science                      444                             
+     5.00 Liberal Arts                          555                             
+
+SQL> 
