@@ -1,0 +1,18 @@
+NAME=Vanier
+echo $NAME
+echo 'College is called '$NAME
+
+NAME=Makivik
+echo 'Company is called '$NAME
+
+x=10
+echo $x
+
+let y=20
+echo $y
+
+z=10+20
+echo $z
+
+let z=10+20
+echo $z
