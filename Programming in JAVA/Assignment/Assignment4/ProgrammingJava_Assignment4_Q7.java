@@ -21,15 +21,14 @@ public class ProgrammingJava_Assignment4_Q7 {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		String path = "src/";
+		String path = System.getProperty("user.dir")+"\\Assignment4\\";
 		File file = new File(path+"ProgrammingJava_Assignment4_Q7_input.txt");
-
 		Scanner inputFile = new Scanner(file);
 
 		String[] student;
 		int count = 0;
 		double sumScore = 0;
-		
+
 		PrintWriter outputFile = new PrintWriter(path+"ProgrammingJava_Assignment4_Q7_output.txt");
 
 		// Read lines from the file until no more are left.

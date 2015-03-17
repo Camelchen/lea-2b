@@ -1,11 +1,14 @@
+import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class Simple
 {
-	public static void main (String []args)
+	public static void main (String []args) throws IOException
 	{
 		double score;
-
+		
+		
 		score = 0.15;
 
 		DecimalFormat formatter = new DecimalFormat("#0%");

@@ -1,3 +1,4 @@
+package Chapter_04_SourceCode;
 import java.util.Scanner; 
 import java.io.*;
 
@@ -13,7 +14,7 @@ public class FileSum
       double sum = 0.0;   // Accumulator, initialized to 0
 
       // Open the file for reading.
-      File file = new File("Numbers.txt");
+      File file = new File(System.getProperty("user.dir")+"\\src\\Chapter_04_SourceCode\\Numbers.txt");
       Scanner inputFile = new Scanner(file);
 
       // Read all of the values from the file

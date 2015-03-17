@@ -42,6 +42,7 @@ public class ProgrammingJava_Assignment4_Q5 {
 					+ (int) bPopFur);
 		} else
 			System.out.print("Invalid input");
+		
 		input.close();
 
 	}

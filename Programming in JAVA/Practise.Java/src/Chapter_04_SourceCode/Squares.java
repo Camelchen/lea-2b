@@ -1,3 +1,5 @@
+package Chapter_04_SourceCode;
+
 /**
    This program demonstrates the for loop.
 */
@@ -11,7 +13,7 @@ public class Squares
       System.out.println("Number   Number Squared");
       System.out.println("-----------------------");
       
-      for (number = 1; number <= 10; number++)
+      for (number = 1; number <= 100; number++)
       {
          System.out.println(number + "\t\t" +
                             number * number);

@@ -8,10 +8,19 @@ public class ProgrammingJava_Assignment4_Q6 {
 
 		int largest = -999;
 		int smallest = 999;	
-		int inputNum;
+		int inputNum = 0;
 		
-		System.out.print("Enter an integer, or -99 to quit: ");
-		inputNum = input.nextInt();
+
+		do {
+			if (inputNum == -99)
+			{
+				System.out.print("[ First number cannot input -99 ]\n");				
+			}				
+			System.out.print("Enter an integer, or -99 to quit: ");
+			inputNum = input.nextInt();		
+		}
+		while (inputNum ==-99);
+		
 
 		while (inputNum != -99)
 		{

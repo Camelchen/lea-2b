@@ -1,5 +1,7 @@
+package Chapter_04_SourceCode;
+
 /**
-   This program asists a technician in the process
+   This program assists a technician in the process
    of checking a substance's temperature.
 */
 import java.util.Scanner;
@@ -8,7 +10,7 @@ public class CheckTemperature
 {
    public static void main(String[] args)
    {
-      final double MAX_TEMP = 102.5;  // Maximim temperature
+      final double MAX_TEMP = 102.5;  // Maximum temperature
       double temperature;             // To hold the temperature
       
       // Create a Scanner object for keyboard input.
