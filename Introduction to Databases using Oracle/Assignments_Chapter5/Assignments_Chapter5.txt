@@ -1,0 +1,39 @@
+1.     Display all employee names (last name and first name separated by a comma and a space) and salary with appropriate column aliases.
+
+        2.     Display all employees who do not get any commission.
+
+        3.     Display unique building names from LOCATION table.
+
+        4.     Display all course sections offered in Winter 2003.
+
+5.       Display names of faculty members who work in department 1 or 2.  Use IN operator in your 
+
+query.
+
+6.     Find all New York  and New Jersey students.
+
+        7.     Give a 10% raise to employee number 111.
+
+8.     Delete department number 30 from the department table. If it is not successful, write down your suggestion to make it work.
+
+        9.     For each course ID, display the maximum count in descending order.
+
+        10.  Insert a new term in the TERM table.
+
+11.   Create a custom prompt for user to input any value betwwen 50 and 99 into DeptId
+
+column.
+
+12.    Find courses with no required prerequisite.
+
+13.    Display faculty names in descending order by their department, but in alphabetical order by
+
+their name within each department.
+
+14.    Find faculty members whose name start with C.
+
+15.    Find students who started in year 2003.  Use start term column and wild card.
+
+16.    Write SQL*Plus command to display a character column in 30 columns, and a numeric
+
+column with 9,999.99 format.

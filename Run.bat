@@ -1,15 +1,23 @@
 ECHO zip
-msiexec /i I:\tmp\7z938.msi /quiet /qb
+msiexec /i M:\tmp\7z938.msi /quiet /qb
 
 ECHO Notepad++
 "%ProgramFiles%\Notepad++\uninstall.exe" /S
-I:\tmp\npp.6.7.4.Installer.exe /S
+M:\tmp\npp.6.7.4.Installer.exe /S
 
 ECHO pinyin
-I:\tmp\GooglePinyinInstaller.exe /S
+M:\tmp\GooglePinyinInstaller.exe /S
+
+ECHO Beyond Compare
+M:\tmp\BCompare-4.0.7.19761.exe /silent
 
 ECHO protal
-I:\tmp\openURL.js
+M:\tmp\openURL.js
 
 ECHO jdk
-I:\tmp\jdk-8u31-windows-i586.exe /s
+M:\tmp\jdk-8u40-windows-i586.exe /s
+
+ECHO Git
+M:\tmp\Git\Git-1.9.5-preview20141217.exe /silent
+
+msiexec /i M:\tmp\Git\GitExtensions-2.48.03-SetupComplete.msi /quiet /qb
