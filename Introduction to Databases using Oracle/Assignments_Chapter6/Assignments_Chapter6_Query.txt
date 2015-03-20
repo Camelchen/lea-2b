@@ -1,0 +1,62 @@
+﻿--Q1
+COLUMN Salary FORMAT $9,999,999.99;
+SELECT INITCAP(lname)||', '||INITCAP(fname) as FullName, Salary FROM employee;
+
+--Q2
+SELECT INITCAP(lname)||', '||INITCAP(fname) as FullName, nvl(commission,0) AS commission from employee;
+
+--Q3
+select building,count(roomno) as CountRoomNo from location group by building;
+
+--Q4
+select unique building from location;
+
+--Q5
+SELECT last||', '||first as FullName, EXTRACT(DAY FROM birthdate)||' '||TRIM(' ' FROM TO_CHAR(birthdate,'MONTH'))||','||EXTRACT(YEAR FROM birthdate) AS Birthdate FROM student;
+
+--Q6
+select avg(TRUNC((sysdate-birthdate)/365,0)),max(TRUNC((sysdate-birthdate)/365,0)) AS Highest,min(TRUNC((sysdate-birthdate)/365,0)) as lowest from student;
+
+--Q7
+select INITCAP(lname)||', '||INITCAP(fname) as FullName, count(dependent.DEPENDENTID) AS CountOfDependent from employee left join dependent on employee.employeeid = dependent.employeeid 
+group by employee.lname,employee.fname having count(dependent.DEPENDENTID)  >= 2;
+
+--Q8
+SELECT lname||', '||fname as FullName, TO_CHAR(hiredate,'YYYY') AS Hire FROM Employee;
+
+--Q9
+--(a) ignore nulls
+select avg(commission) as avg_commission from employee where commission is not null;
+--(b) not ignore nulls
+select avg(nvl(commission,0)) as avg_commission from employee;
+
+--Q10
+select courseid,termid,sum(maxcount) from crssection group by termid,courseid;
+
+--Q11
+SELECT POWER(2,10) FROM DUAL;
+
+--Q12
+select courseid,termid,sum(maxcount) from crssection group by termid,courseid;
+
+--Q13
+select department.DEPTNAME, count(faculty.facultyid) as CountOfFaculty from faculty left join department on faculty.DEPTID = department.DEPTID group by faculty.DEPTID,department.DEPTNAME;
+
+--Q14
+select dept.deptname,avg(employee.salary) from employee left join dept on employee.deptid = dept.deptid
+group by employee.deptid,dept.deptid, dept.deptname
+having avg(employee.salary)>75000;
+
+--Q15
+SELECT lname||', '||fname as FullName, TRUNC(MONTHS_BETWEEN (sysdate,hiredate)/12) AS NumberOfYear FROM Employee;
+
+--Q16
+SELECT last||', '||first as FullName, birthdate FROM student WHERE TO_CHAR(birthdate, 'mm') = '05';
+--in the student table, there isn't the student who are born in the month of May
+
+--Q17
+select lname,fname,salary+nvl(commission,0) from employee;
+
+--Q18
+SELECT lname||', '||fname as FullName,Salary, CASE WHEN Salary>100000 THEN 'HIGH' WHEN Salary BETWEEN 50000 AND 100000 THEN 'MEDIUM' WHEN Salary<50000 THEN 'LOW' END AS SalLvl FROM employee;
+
