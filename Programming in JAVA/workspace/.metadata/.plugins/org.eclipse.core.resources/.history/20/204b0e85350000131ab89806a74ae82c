@@ -1,0 +1,80 @@
+
+##########################################################################
+# Crawler: Get data from cic.gc.ca
+##########################################################################
+import urllib
+import urllib2
+
+postdata=urllib.urlencode ( {
+    'lang':'',
+    '_page':'_target0',
+    'app':'ecas',
+    #'identifierType':'1',
+    #'identifier':'90091478',
+    'identifierType':'3',
+    'identifier':'EP00087697',
+    'surname':'CHEN',
+    'dateOfBirth':'1980-08-03',
+    'countryOfBirth':'202',
+    '_submit':'Continue'
+});
+
+req = urllib2.Request(
+    url = 'https://services3.cic.gc.ca/ecas/authenticate.do?app=ecas',
+    data = postdata
+)
+
+result = urllib2.urlopen(req).read()
+outfile = open("result.html", "w");
+outfile.write(result);
+
+
+##########################################################################
+# Crawler: Analysis data
+##########################################################################
+from pyquery import PyQuery as pq
+from lxml import etree
+
+dom = pq(result)
+
+#Get all detail information
+#Camel,2013-08-07
+statusTbl = pq(dom('.table-accent')).find('tbody')
+#print statusTbl
+
+
+##########################################################################
+# Crawler: Save result to SQLite 
+##########################################################################
+import sqlite3
+
+conn = sqlite3.connect('iFederal.db')
+c = conn.cursor()
+#c.execute('''create table tblStatus (ID INT,Status TEXT,UpdateTime Datetime)''')
+
+#Get MaxID
+for row in c.execute('select max(ID) from tblStatus'):
+    maxID =  row[0]
+if str(maxID)=='None':
+    newID = 1
+else:
+    newID = maxID+1
+
+#Clear TAB\Space
+import re
+curStatus = re.sub('\s+',' ',statusTbl.text())  
+#print curStatus
+
+#Get Now!
+from datetime import date
+today = date.today()
+
+#print maxID, curStatus, today
+
+#insert into tblStatus(ID,Status,UpdateTime) values ( 3,'@Status','2013-08-07')
+qInsert = 'insert into tblStatus(ID,Status,UpdateTime) values ( '+str(newID)+',\''+str(curStatus)+'\',\''+str(today) + '\')'
+#print qInsert
+c.executescript(qInsert)
+
+c.close()
+conn.close()
