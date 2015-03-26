@@ -1,0 +1,77 @@
+--a)
+SQL> select Last ||', '|| First as FullName,major.MAJORDESC from student left join major on student.majorid = major.MAJORID;
+
+FULLNAME                         MAJORDESC                                      
+-------------------------------- -------------------------                      
+Diaz, Jose                       AAS-Accounting                                 
+Khan, Amir                       AAS-Computer Science                           
+Patel, Rajesh                    BS-Accounting                                  
+Rickles, Deborah                 BS-Computer Science                            
+Tyler, Mickey                    BS-Computer Science                            
+Lee, Brian                       BS-Telecommunications                          
+
+6 rows selected.
+
+SQL> 
+SQL> --b)
+SQL> select Last ||', '|| First as FullName, registration.final, student.STARTTERM from registration
+  2  left join student on registration.studentid = student.studentid
+  3  where FINAL = 'F' and student.startterm = 'WN03';
+
+FULLNAME                         F STAR                                         
+-------------------------------- - ----                                         
+Diaz, Jose                       F WN03                                         
+
+SQL> 
+SQL> --c)
+SQL> select Last ||', '|| First as FullName, faculty.NAME as AdvisorsName,location.BUILDING from student
+  2  left join faculty on faculty.FACULTYID = student.FACULTYID
+  3  left join location on location.ROOMID = faculty.roomid ;
+
+FULLNAME                         ADVISORSNAME    BUILDIN                        
+-------------------------------- --------------- -------                        
+Patel, Rajesh                    Jones           Gandhi                         
+Diaz, Jose                       Mobley          Gandhi                         
+Lee, Brian                       Sen             Gandhi                         
+Rickles, Deborah                 Chang           Gandhi                         
+Tyler, Mickey                    Chang           Gandhi                         
+Khan, Amir                       Williams        Gandhi                         
+
+6 rows selected.
+
+SQL> 
+SQL> --d)
+SQL> select course.title,crssection.section,faculty.name as "Faculty Member" from crssection
+  2  left join faculty on crssection.facultyid = faculty.facultyid
+  3  left join course on course.courseid = crssection.courseid
+  4  where termid = 'SP03';
+
+TITLE                SE Faculty Member                                          
+-------------------- -- ---------------                                         
+Systems Analysis     02 Jones                                                   
+Database Systems     11 Jones                                                   
+Database Systems     21 Mobley                                                  
+Database Systems     31 Mobley                                                  
+Systems Analysis     01                                                         
+English Literature   05                                                         
+
+6 rows selected.
+
+SQL> 
+SQL> 
+SQL> --e)
+SQL> select b.*,a.title as "prerequisite name" from course a right join course b on a.courseid = b.prereq;
+
+COURSE TITLE                   CREDITS PREREQ prerequisite name                 
+------ -------------------- ---------- ------ --------------------              
+LA123  English Literature            3 EN100  Basic English                     
+CIS265 Systems Analysis              3 CIS253 Database Systems                  
+AC101  Accounting                    3                                          
+MA150  College Algebra               3                                          
+CIS253 Database Systems              3                                          
+EN100  Basic English                 0                                          
+
+6 rows selected.
+
+SQL> 
+SQL> 

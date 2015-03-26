@@ -1,0 +1,193 @@
+--(a)
+SQL> select LNAME ||', '||FNAME AS "Employee Name", dept.DEPTNAME from EMPLOYEE
+  2  inner join dept on employee.deptid = dept.deptid;
+
+Employee Name                    DEPTNAME                                       
+-------------------------------- ------------                                   
+Smith, John                      Finance                                        
+Houston, Larry                   Marketing                                      
+Roberts, Sandi                   Finance                                        
+McCall, Alex                     InfoSys                                        
+Dev, Derek                       InfoSys                                        
+Shaw, Jinku                      Sales                                          
+Garner, Stanley                  Sales                                          
+Chen, Sunny                      Finance                                        
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> --(b)
+SQL> select a.LNAME ||', '||a.FNAME AS "Supervisor Name" from  employee a
+  2  inner join employee b on a.employeeid = b.SUPERVISOR
+  3  where b.employeeid = 433;
+
+Supervisor Name                                                                 
+--------------------------------                                                
+Dev, Derek                                                                      
+
+SQL> 
+SQL> 
+SQL> --(c)
+SQL> select b.LNAME ||', '||b.FNAME AS "Employee Name",b.SALARY as "Employee Salary",
+  2  a.LNAME ||', '||a.FNAME AS "Supervisor Name",a.SALARY as "Supervisor Salary"
+  3  from  employee a
+  4  inner join employee b on a.employeeid = b.SUPERVISOR;
+
+Employee Name                    Employee Salary                                
+-------------------------------- ---------------                                
+Supervisor Name                  Supervisor Salary                              
+-------------------------------- -----------------                              
+Houston, Larry                            150000                                
+Smith, John                                 265000                              
+                                                                                
+Roberts, Sandi                             75000                                
+Smith, John                                 265000                              
+                                                                                
+McCall, Alex                               66500                                
+Dev, Derek                                   80000                              
+                                                                                
+
+Employee Name                    Employee Salary                                
+-------------------------------- ---------------                                
+Supervisor Name                  Supervisor Salary                              
+-------------------------------- -----------------                              
+Dev, Derek                                 80000                                
+Smith, John                                 265000                              
+                                                                                
+Shaw, Jinku                                24500                                
+Garner, Stanley                              45000                              
+                                                                                
+Garner, Stanley                            45000                                
+Smith, John                                 265000                              
+                                                                                
+
+Employee Name                    Employee Salary                                
+-------------------------------- ---------------                                
+Supervisor Name                  Supervisor Salary                              
+-------------------------------- -----------------                              
+Chen, Sunny                                35000                                
+Roberts, Sandi                               75000                              
+                                                                                
+
+7 rows selected.
+
+SQL> 
+SQL> 
+SQL> --(d)
+SQL> select LNAME ||', '||FNAME AS "Employee Name",employee.salary, emplevel.levelno from employee
+  2  inner join emplevel on employee.salary between emplevel.lowsalary and highsalary;
+
+Employee Name                        SALARY    LEVELNO                          
+-------------------------------- ---------- ----------                          
+Shaw, Jinku                           24500          1                          
+Chen, Sunny                           35000          2                          
+Garner, Stanley                       45000          2                          
+McCall, Alex                          66500          3                          
+Roberts, Sandi                        75000          3                          
+Dev, Derek                            80000          3                          
+Houston, Larry                       150000          4                          
+Smith, John                          265000          4                          
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> --(e)
+SQL> select * from employee
+  2  minus
+  3  select employee.* from employee
+  4  right join dept on employee.deptid = dept.deptid
+  5  right join position on employee.POSITIONID = position.positionid
+  6  right join qualification on employee.QUALID = qualification.QUALID;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE       
+---------- --------------- --------------- ---------- ---------- ---------      
+    SALARY COMMISSION     DEPTID     QUALID                                     
+---------- ---------- ---------- ----------                                     
+       200 Shaw            Jinku                    5        135 03-JAN-00      
+     24500       3000         30                                                
+                                                                                
+
+SQL> 
+SQL> --because employee 200 hasn't qualification id
+SQL> 
+SQL> 
+SQL> --(f)
+SQL> select employee.*,dept.DEPTNAME from employee
+  2  right join dept on employee.deptid = dept.deptid
+  3  where dept.DEPTNAME = 'Sales';
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE       
+---------- --------------- --------------- ---------- ---------- ---------      
+    SALARY COMMISSION     DEPTID     QUALID DEPTNAME                            
+---------- ---------- ---------- ---------- ------------                        
+       200 Shaw            Jinku                    5        135 03-JAN-00      
+     24500       3000         30            Sales                               
+                                                                                
+       135 Garner          Stanley                  2        111 29-FEB-96      
+     45000       5000         30          5 Sales                               
+                                                                                
+
+SQL> 
+SQL> 
+SQL> --(g)
+SQL> select LNAME ||', '||FNAME AS "Employee Name", dept.DEPTNAME, dept.location
+  2  from EMPLOYEE,dept
+  3  where employee.deptid (+)= dept.deptid ;
+
+Employee Name                    DEPTNAME     LOCATION                          
+-------------------------------- ------------ ---------------                   
+Smith, John                      Finance      Charlotte                         
+Houston, Larry                   Marketing    Los Angeles                       
+Roberts, Sandi                   Finance      Charlotte                         
+McCall, Alex                     InfoSys      New York                          
+Dev, Derek                       InfoSys      New York                          
+Shaw, Jinku                      Sales        Woodbridge                        
+Garner, Stanley                  Sales        Woodbridge                        
+Chen, Sunny                      Finance      Charlotte                         
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> --(h)
+SQL> select LNAME ||', '||FNAME AS "Employee Name", TRUNC((sysdate-hiredate)/365,0) AS NumberOfYear, dept.DEPTNAME from employee
+  2  left join dept on dept.deptid = employee.deptid
+  3  order by TRUNC((sysdate-hiredate)/365,0) desc ;
+
+Employee Name                    NUMBEROFYEAR DEPTNAME                          
+-------------------------------- ------------ ------------                      
+Smith, John                                54 Finance                           
+Houston, Larry                             47 Marketing                         
+Roberts, Sandi                             23 Finance                           
+Dev, Derek                                 20 InfoSys                           
+Garner, Stanley                            19 Sales                             
+McCall, Alex                               17 InfoSys                           
+Shaw, Jinku                                15 Sales                             
+Chen, Sunny                                15 Finance                           
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> --(i)
+SQL> select * from employee where deptid = (select deptid from employee where fname = 'John' and lname = 'Smith');
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE       
+---------- --------------- --------------- ---------- ---------- ---------      
+    SALARY COMMISSION     DEPTID     QUALID                                     
+---------- ---------- ---------- ----------                                     
+       111 Smith           John                     1            15-APR-60      
+    265000      35000         10          1                                     
+                                                                                
+       123 Roberts         Sandi                    2        111 02-DEC-91      
+     75000                    10          2                                     
+                                                                                
+       222 Chen            Sunny                    4        123 15-AUG-99      
+     35000                    10          3                                     
+                                                                                
+
+SQL> 
+SQL> 
+SQL> 

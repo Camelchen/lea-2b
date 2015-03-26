@@ -1,0 +1,23 @@
+﻿--a)
+select Last ||', '|| First as FullName,major.MAJORDESC from student left join major on student.majorid = major.MAJORID;
+
+--b)
+select Last ||', '|| First as FullName, registration.final, student.STARTTERM from registration 
+left join student on registration.studentid = student.studentid 
+where FINAL = 'F' and student.startterm = 'WN03';
+
+--c)
+select Last ||', '|| First as FullName, faculty.NAME as AdvisorsName,location.BUILDING from student 
+left join faculty on faculty.FACULTYID = student.FACULTYID
+left join location on location.ROOMID = faculty.roomid ;
+
+--d)
+select course.title,crssection.section,faculty.name as "Faculty Member" from crssection
+left join faculty on crssection.facultyid = faculty.facultyid
+left join course on course.courseid = crssection.courseid
+where termid = 'SP03';
+
+
+--e)
+select b.*,a.title as "prerequisite name" from course a right join course b on a.courseid = b.prereq;
+
