@@ -1,0 +1,3 @@
+sort -k1 vegetables > vsort
+paste vsort bread > food
+awk '{printf "%s\t%s\t%s','%s %s\n",$1,$2,$3,$4,$5}' food

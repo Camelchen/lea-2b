@@ -1,0 +1,11 @@
+echo -n "Try to guess my favourite color "
+read guess
+
+while [ "$guess" != "red" ]; do
+  echo "No, not that one. Try again." ;
+  read guess
+  if [ "$guess" == "red" ]
+  then 
+    echo "It is the exact color"
+  fi
+done

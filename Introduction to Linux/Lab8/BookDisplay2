@@ -1,0 +1,24 @@
+awk ' BEGIN {
+	{print "\t\tList of Books"}
+	{"date" | getline d}
+	{printf "\t %s\n",d}
+	{print "==================================================================================================================="}
+    }
+    {printf "Book ID: %s\tBook Author: %16-s Book Title: %20-s Book Price: %6-.2f , " , $1,$2,$3,$6}
+    { if ($6>100)
+      {
+	print "It is very expensive"
+	sumex += $6
+      }
+      else
+      {
+	print "It is affordable"
+	sumaf += $6
+      }
+    }
+    END {
+      {printf "The sum of prices of all books, which are greater than 100 is %s\n", sumex}
+      {printf "The sum of prices of all books, which are less than 100 is %s\n", sumaf}
+      {printf "The sum of prices of all books is %s\n", sumex+sumaf}
+      }
+    ' book

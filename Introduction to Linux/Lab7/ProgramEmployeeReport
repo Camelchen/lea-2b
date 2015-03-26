@@ -1,0 +1,10 @@
+awk 'BEGIN {
+	{print "\t\t List of all Employees \n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "Empl ID\tEmployeeLName\t\tEmployeeFName\t\tSalary\n"}
+	{print "=========================================================================="}
+	}
+	{if ($5 > 100000) msg = "High Salary"; else msg = "Inc. Salary";
+	  printf " %s\t%-8s\t\t%-16s\t%-8s%s\n",$1,$2,$3,$5,msg;
+	}' employee

@@ -1,0 +1,32 @@
+awk ' BEGIN {
+	{print "\t\tList of All Products"}
+	{"date" | getline d}
+	{printf "\t %s\n",d}
+	{print "==================================================================================================================="}
+    }
+   {printf "Product ID: %s\tProduct Name: %12-s Product Price: %6-.2f \tManufactured By: %s\n" , $1,$2,$3,$4}
+    { if ($4=="GENERALMOTOR")
+      {
+	ge += $3
+      }
+      if ($4=="TOYOTA")
+      {
+	to += $3
+      }
+      if ($4=="FORD")
+      {
+	fo += $3
+      }
+      if ($4=="HONDA")
+      {
+	ho += $3
+      }
+    }
+    END {
+      {printf "The sum of product from GENERAL MOTOR is %s\n", ge}
+      {printf "The sum of product from TOYOTA is %s\n", to}
+      {printf "The sum of product from FORD is %s\n", fo}
+      {printf "The sum of product from HONDA is %s\n", ho}
+      {printf "The sum of product from all Manufacturers is %s $\n", ge+to+fo+ho}
+      }
+    ' product

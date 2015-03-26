@@ -1,0 +1,29 @@
+awk ' BEGIN {
+	{print "\t\tList of All Employees"}
+	{"date" | getline d}
+	{printf "\t %s\n",d}
+	{print "==================================================================================================================="}
+    }
+    { if ($4>=150000)
+      {
+	raiseRate = 30
+      }
+      if ($4<=95000 && $4 >= 75000)
+      {
+	raiseRate = 20
+      }
+      if ($4<=70000 && $4 >= 40000)
+      {
+	raiseRate = 10
+      }
+      raiseSalary = $4*(1+raiseRate/100)
+      sumSalary += $4
+      sumRaiseSalary += raiseSalary
+    }
+    {printf "Employee ID: %s\tEmployee Name: %10-s Employee Salary: %10-.2f , Raise salary by %6-.2f%: %s $\n" , $1,$2,$4,raiseRate,raiseSalary}
+    END {
+      {printf "The sum of salaries of all employees is %s $\n", sumSalary}
+      {printf "The sum of Expected raise of salaries of all employees is %s $\n", sumRaiseSalary}
+      {printf "The Expected Raise of Salarial Mass is evaluated to %s $\n", sumRaiseSalary-sumSalary}
+      }
+    ' employee

@@ -1,0 +1,13 @@
+awk ' BEGIN {
+	{print "\t\tList of Books"}
+	{"date" | getline d}
+	{printf "\t %s\n",d}
+	{print "==================================================================================================================="}
+    }
+    {printf "Book ID: %s\tBook Author: %16-s Book Title: %20-s Book Price: %6-.2f , " , $1,$2,$3,$6}
+    { if ($6>100)
+	print "It is very expensive"
+      else
+	print "It is affordable"
+    }
+    ' book
