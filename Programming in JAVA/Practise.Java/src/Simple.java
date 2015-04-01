@@ -1,25 +1,18 @@
-import java.io.File;
-import java.io.IOException;
-import java.text.DecimalFormat;
+
+import java.io.*;
+import java.util.*;
+
 
 public class Simple
 {
 	public static void main (String []args) throws IOException
 	{
-		double score;
-		
-		
-		score = 0.15;
-
-		DecimalFormat formatter = new DecimalFormat("#0%");
-		System.out.println(formatter.format(score));
-
-
-		System.out.println("Zhuorui");
-		System.out.println(15.0/100);
-		System.out.println(score>5?"number = 10":"number = 5");
-
-
+		Random rand = new Random();
+		int i = 0 ;
+		while (i<100) {
+			System.out.print(rand.nextInt(6)+1);
+			i++;
+		}
 
 	}
 }

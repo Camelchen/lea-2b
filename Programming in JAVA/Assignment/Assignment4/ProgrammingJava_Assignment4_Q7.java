@@ -41,7 +41,7 @@ public class ProgrammingJava_Assignment4_Q7 {
 			count++;
 			sumScore = sumScore + Double.parseDouble(student[2]);
 
-			DecimalFormat myFormatter = new DecimalFormat("##.00");
+			DecimalFormat myFormatter = new DecimalFormat("###.00");
 			// Display
 			System.out.println(student[0] + "\t" + student[1] + "\t"
 					+ myFormatter.format(Double.parseDouble(student[2])) + "\t"

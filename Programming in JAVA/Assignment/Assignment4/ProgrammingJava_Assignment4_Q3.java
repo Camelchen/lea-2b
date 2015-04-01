@@ -26,7 +26,7 @@ public class ProgrammingJava_Assignment4_Q3 {
 			again = input.nextLine();
 
 		} while (again.toLowerCase().equals("yes"));
-		
+
 		input.close();
 	}
 }

@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 // This program Assignment-1.
@@ -22,7 +21,7 @@ public class ProgrammingJava_Assignment1
 
 
 	System.out.println("Question 2-a:\n");
-      //display * diamon
+      //display * diamond
       for (int i=1;i<=7;i++) {
 		  for (int j=1;j<=7;j++) {
 			  if (j<=Math.abs(i-4)){
@@ -37,7 +36,7 @@ public class ProgrammingJava_Assignment1
 
 	//without break;
 	System.out.println("Question 2-a:\n");
-      //display * diamon
+      //display * diamond
       for (int i=1;i<=7;i++) {
 		  int j = 1;
 		  while ( j<=(7-Math.abs(i-4)) && j<=7)  {

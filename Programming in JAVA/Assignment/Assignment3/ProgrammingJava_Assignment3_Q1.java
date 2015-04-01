@@ -1,7 +1,5 @@
 
-import java.util.Scanner;
 import javax.swing.*;
-import java.math.*;
 
 public class ProgrammingJava_Assignment3_Q1
 {
