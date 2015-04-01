@@ -1,0 +1,47 @@
+CHAPTER 8
+
+Lab Activity
+
+1.     Use the N2 Corporation database tables to design the following subqueries.     (Use the spooling method to capture all queries and results in the CHAP8SP1.LST file.)
+
+        (a)            Display employee Jinku Shaw’s department name.
+
+        (b)            Find name of the supervisor for employee number 433.
+
+        (c)            Who has same qualification as Stanley Garner?
+
+        (d)            Which department has more employees than department 20?
+
+        (e)            Which employees are working in the company longer than Larry Houston?
+
+        (f)             Find all employees in the sales department by using a nested query.
+
+        (g)            Create a new table, EMP30, and populate it with employees in department 30, using an existing table and a subquery.  Use EmployeeId, Lname, Fname, HireDate and Salary columns.
+
+        (h)            Add more rows to EMP30 table with employee in department 40.  Do not transfer employee’s salary.
+
+        (i)             Update salary of newly transferred employee from EMPLOYEE table to EMP30 table with MERGE statement, and INSERT employees who are not in EMP30 table.
+
+(j)            Find employees with minimum salary in their own department with the use of correlated subquery.
+
+(k)           Use multiple level subquery to display dependent information for employees, who belong to FINANCE department.
+
+(l)            Use set operator and subquery to find employees, who do not have any dependents.
+
+(m)          Write a subquery that finds average salary by each department.  Check to find if employee 543’s salary satisfies =ANY, <ANY, >ANY, <ALL, or >ALL condition against those departmental average salaries.
+
+       2.     Use the Indo–US College database tables to design the following subqueries. (Use the spooling method to capture all queries and results in the CHAP8SP2.LST file)
+
+        (a)            Display student Jose Diaz’s faculty advisor’s name and phone number.
+
+        (b)            Find rooms with bottom-2 capacities.  Do not include office rooms.
+
+        (c)            Find Spring 2003 course sections with the top three maximum count numbers.
+
+        (d)            Find all information regarding classrooms (RoomType = ‘C’).
+
+        (e)            Create a new table, SP03SECT, for Spring 2003 semester course sections using a subquery.  Include CourseId, Section, FacultyId and RoomId columns only.
+
+        (f)             Delete rows from SP03SECT table for faculty Mobley.
+
+        (g)            Find faculty members who do not teach any course in Spring 2003 semester. Use correlated subquery with NOT EXISTS operator on SP03SECT table.

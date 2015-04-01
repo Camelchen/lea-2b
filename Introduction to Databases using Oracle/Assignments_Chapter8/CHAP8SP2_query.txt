@@ -1,0 +1,35 @@
+﻿--a)
+select name,phone from faculty where facultyid = (select facultyid from student where last = 'Diaz');
+
+
+
+--b)
+select * 
+from (select roomno,capacity,roomtype from location where roomtype <> (select roomtype from room where roomdesc = 'Office') order by capacity) room
+where rownum <=2 order by rownum;
+
+
+--c)
+select * from (select * from crssection where termid = 'SP03' order by maxcount desc) maxcrouse
+where rownum <=3 order by rownum;
+
+
+--d)
+select * from location where roomtype = 'C';
+
+
+--e)
+create table SP03SECT
+as
+select courseid,section,facultyid,roomid from crssection where termid = 'SP03';
+
+select * from SP03SECT
+
+
+--(f)
+delete from SP03SECT where facultyid = (select facultyid from faculty where name = 'Mobley');
+
+select * from SP03SECT
+
+--(g)
+select * from faculty where facultyid not in (select nvl(facultyid,0) from crssection where termid = 'SP03');

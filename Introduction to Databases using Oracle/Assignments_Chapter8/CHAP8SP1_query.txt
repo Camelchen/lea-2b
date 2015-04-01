@@ -1,0 +1,76 @@
+﻿--(a)
+select deptname from dept where deptid = (select deptId from employee where fname = 'Jinku');
+
+
+--(b)
+select LName ||', '|| FName as FullName from employee 
+where employeeId = (select supervisor from employee where employeeid = 433);
+
+
+--(c)
+SELECT * FROM employee where qualid = (select qualid from employee where LName = 'Garner');
+--only Stanley Garner himself.
+
+
+--(d)
+select * from dept
+where deptid = (
+  select deptid from employee group by deptid 
+  having count(*) > (select count(*) from employee where deptid = 20 group by deptid)
+);
+
+
+--(e)
+select LNAME ||', '||FNAME AS "Employee Name" from EMPLOYEE where hiredate < (select hiredate from employee where LNAME = 'Houston');
+
+
+--(f)
+select * from employee where deptid = (select deptid from dept where deptname = 'Sales');
+
+
+--(g)
+create table EMP30
+as 
+select employeeid,lname,fname,hiredate,salary from employee where deptid = 30;
+
+select * from emp30;
+
+
+--(h)
+insert into emp30
+select employeeid,lname,fname,hiredate,null as salary from employee where deptid = 40;
+
+select * from emp30;
+
+
+--(i)
+merge into emp30 e
+using (select Employeeid ,lname,fname,hiredate, salary from employee) oe
+on (e.employeeid = oe.employeeid)
+when matched then update set e.salary = oe.salary
+when not matched then insert (e.employeeid,e.lname,e.fname,e.hiredate,e.salary) values (oe.employeeid,oe.lname,oe.fname,oe.hiredate,oe.salary);
+
+
+--(j)
+select * from employee e inner join ( select deptid , MIN(salary) as min_salary from employee group by deptid) m
+on e.deptid = m.deptid and e.salary = m.min_salary;
+
+
+--(k)
+select * from dependent where employeeid in (select employeeid from employee where deptid = (select deptid from dept where deptname = 'Finance'));
+
+
+--(l)
+select * from employee where employeeid not in (select employeeid from dependent);
+
+
+--(m)
+
+
+
+
+
+
+
+
+

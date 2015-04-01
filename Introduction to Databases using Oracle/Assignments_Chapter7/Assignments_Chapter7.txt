@@ -1,0 +1,35 @@
+CHAPTER 7
+
+Lab Activity
+
+1.     Use the NamanNavan (N2) Corporation database tables to design the following queries. (Use the spooling method to capture all queries and results in the CHAP7SP1.LST file.)
+
+        (a)            Display all employee names and their department names.
+
+        (b)            Find name of the supervisor for employee number 433.
+
+        (c)            Find all employees’ full names (lastname, firstname format) with salary, and their supervisor’s name with salary.
+
+        (d)            Find each employee’s salary information and level based on the salary.
+
+        (e)            Display each employee’s name, department name, position description, and qualification description. Which employee is missing? Why?
+
+        (f)             Find all employees in the sales department.
+
+        (g)            Display employee names and dependent information using an outer join.
+
+        (h)            Find out the names and number of years worked along with their department names in descending order by number of years worked.
+
+(i)             Who works in the same department in which John Smith works?
+
+  2.  Use the Indo–US (IU) College database tables to design the following queries. (Use the spooling method to capture all queries and results in the CHAP7SP2.LST file)
+
+        (a)            Display a student’s full name along with his/her major’s description.
+
+        (b)            Get names of students, who received final grade ‘F’ in Winter 2003.
+
+        (c)            Display student names, their faculty advisors names, and faculty’s office location.
+
+        (d)            Get Spring 2003 course sections with the faculty member assigned to teach the class. Include course sections without any faculty assigned to them.
+
+        (e)            Display course titles along with their prerequisite names. Display courses without prerequisite also.
