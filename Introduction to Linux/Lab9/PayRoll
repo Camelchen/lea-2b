@@ -1,0 +1,33 @@
+echo 'The Great Story Ever'
+new="yes"
+while [ "$new" != "no" ]; do
+  echo 'Enter Employee''s Name: ' 
+  read name
+  echo 'Enter Employee''s SSN: '  
+  read ssn
+  echo 'Enter Number of Worked Hour: '
+  read hour
+  echo 'Enter the Rate Hour $: '
+  read rate
+
+    
+  echo "###############################################################"
+  echo The Total Earning is \(Display By default\) is `echo "$hour*$rate" | bc` $
+  echo -e ' \t 'The Fed_Tax Defucation is `echo "$hour*$rate*0.07" | bc` $
+  echo -e ' \t 'The Prv_Tax Defucation is `echo "$hour*$rate*0.09" | bc` $
+  echo -e ' \t 'The QP_Ins Defucation is `echo "$hour*$rate*0.0055" | bc` $
+
+  echo -e ' \t 'The E_ins Defucation is `echo "$hour*$rate*0.014" | bc` $
+  echo -e ' \t 'The Qpp Defucation is `echo "$hour*$rate*0.045" | bc` $
+  echo -e ' \t 'The Union_d Defucation is `echo "$hour*$rate*0.0165" | bc` $
+  echo
+  echo -e ' \t 'The Total Defucation is `echo "$hour*$rate*(0.07+0.09+0.0055+0.014+0.045+0.0165)" | bc` $
+  echo
+  echo
+  echo -e ' \t 'The Total Net Amount is `echo "$hour*$rate*(1-(0.07+0.09+0.0055+0.014+0.045+0.0165))" | bc` $
+  echo "###############################################################"
+
+  echo Do you want to enter new value yes/no?
+  read new
+done
+

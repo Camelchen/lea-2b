@@ -1,0 +1,20 @@
+#========================================================
+# Script Name: phmenu
+# By: Your initials here
+# Date: Today’s date
+# Purpose: A menu for the Corporate Phone List
+# Command Line: phmenu
+#========================================================
+loop=y
+while [ "$loop" = y ]
+do
+clear
+tput cup 3 12; echo "Corporate Phone Reporting Menu"
+tput cup 4 12; echo "=============================="
+tput cup 6 9; echo "P - Print Phone List"
+tput cup 7 9; echo "A - Add New Phones"
+tput cup 8 9; echo "S - Search for Phones"
+tput cup 10 9; echo "Q - Quit: "
+tput cup 10 19;
+read choice || continue
+done 

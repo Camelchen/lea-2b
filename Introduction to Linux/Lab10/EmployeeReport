@@ -1,0 +1,8 @@
+awk 'BEGIN {
+	{print "\t\t List of All Employees\n"}
+	{"date" | getline d}
+	{printf "\t %s\n",d}
+	{print "EmployeeID\tEmployee LName\t\tEmployee FName\t\tSalary\n"}
+	{print "========================================================================="}
+	}
+	{printf "%-2s\t\t%-8s\t\t %-8s\t\t %d\n",$1,$2,$3,$5}' Employee

@@ -1,0 +1,20 @@
+echo 'The Billing System'
+new="yes"
+sum=0
+while [ "$new" != "no" ]; do
+  echo 'Enter your Product''s Price:'
+  read price
+
+  echo 'Enter your Product''s Quantity: '
+  read quantity
+
+  result=`echo "$price*$quantity+$price*$quantity*0.075+$price*$quantity*0.06" | bc`
+  sum=`echo "$result+$sum" | bc`
+  echo The Subtotal of billing is $result
+  echo The Total of billing is $sum
+
+  echo Thank you for Doing Business With Us
+  echo Do you want to enter new value yes/no?
+  read new
+done
+

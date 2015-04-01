@@ -1,0 +1,14 @@
+sort -k6 Employee > _employeeSorted
+sort -k1 Dept > _deptSorted
+join -1 6 -2 1 _employeeSorted _deptSorted > _empdep
+
+awk 'BEGIN {
+	{print "\t\t List of all Employees and Their Departmental Affiliation \n"}
+	{"date" | getline d}
+	{printf "\t %s\n", d}
+	{printf "Empl ID\tEmployeeLName\tEmployeeFName\tSalary\t\tDepartment\tLocation\n"}
+	{print "==============================================================================="}
+	}
+	{printf " %s\t%-8s \t%-8s\t%-8s\t%-8s \t%-8s \n",$2,$3,$4,$6,$7,$8}' _empdep
+ 
+ 

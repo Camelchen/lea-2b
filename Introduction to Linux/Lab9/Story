@@ -1,0 +1,28 @@
+echo 'The Great Story Ever'
+new="yes"
+sum=0
+while [ "$new" != "no" ]; do
+  echo 'Enter your name: ' 
+  read name
+  echo 'Enter your age: '  
+  read age
+  echo 'Enter the Name of your City: '
+  read city
+  echo 'Enter the name of your College: '
+  read college
+  echo 'Enter your profession: '
+  read profession
+  echo 'Enter the type of animal you Like: '
+  read animal
+  echo 'Enter the pet''s name: '
+  read petname
+
+  echo There once was a person named $name who lived in $city. At the age of $age,
+  echo $name went to college at $college. $name graduated and went to work as a 
+  echo $profession. Then, $name adopted a\(n\) $animal named $petname. They
+  echo both lived happily ever after!
+
+  echo Do you want to enter new value yes/no?
+  read new
+done
+

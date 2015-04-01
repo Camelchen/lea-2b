@@ -1,0 +1,15 @@
+echo 'The Conversion System'
+new="yes"
+sum=0
+while [ "$new" != "no" ]; do
+  echo 'Enter our Amount in Canadian Currency:'
+  read CAD
+
+  USD=`echo "$CAD*1.10" | bc`
+  echo The corresponding Amount in US Currency \(by default\) is : $USD $
+
+  echo Thank you for Doing Business With Us
+  echo Do you want to enter new value yes/no?
+  read new
+done
+
