@@ -7,12 +7,14 @@ public class Simple
 {
 	public static void main (String []args) throws IOException
 	{
-		Random rand = new Random();
-		int i = 0 ;
-		while (i<100) {
-			System.out.print(rand.nextInt(6)+1);
-			i++;
-		}
-
+		
+		String s = "Today is the last week01234567890123456789!";
+		s.substring(6, 20);
+		System.out.println(s);
+		
+		StringTokenizer strTokenizer = new StringTokenizer("/data/user/root","/");
+		System.out.println(strTokenizer.nextToken());
+		System.out.println(strTokenizer.nextToken());
+		System.out.println(strTokenizer.nextToken());
 	}
 }

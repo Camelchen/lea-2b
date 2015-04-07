@@ -1,3 +1,5 @@
+package Chapter_06_SourceCode;
+
 import java.util.Scanner;
 
 /**

@@ -1,3 +1,5 @@
+package Chapter_06_SourceCode;
+
 /**
    The BankAccount class simulates a bank account.
 */

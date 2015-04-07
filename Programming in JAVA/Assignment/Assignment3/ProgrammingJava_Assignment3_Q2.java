@@ -1,8 +1,6 @@
 
 import java.util.Scanner;
-import javax.swing.*;
-import java.math.*;
-import java.lang.*;
+
 
 public class ProgrammingJava_Assignment3_Q2
 {
