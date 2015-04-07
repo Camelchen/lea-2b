@@ -1,0 +1,101 @@
+--a)
+SQL> select name,phone from faculty where facultyid = (select facultyid from student where last = 'Diaz');
+
+NAME            PHO                                                             
+--------------- ---                                                             
+Mobley          529                                                             
+
+SQL> 
+SQL> 
+SQL> 
+SQL> --b)
+SQL> select *
+  2  from (select roomno,capacity,roomtype from location where roomtype <> (select roomtype from room where roomdesc = 'Office') order by capacity) room
+  3  where rownum <=2 order by rownum;
+
+ROO   CAPACITY R                                                                
+--- ---------- -                                                                
+210         30 L                                                                
+202         35 L                                                                
+
+SQL> 
+SQL> 
+SQL> --c)
+SQL> select * from (select * from crssection join term on crssection.termid = term.termid where term.termid = 'SP03' order by maxcount desc) maxcrouse
+  2  where rownum <=3 order by rownum;
+
+      CSID COURSE SE QCSJ  FACULTYID DA START ENDTI     ROOMID   MAXCOUNT QCSJ  
+---------- ------ -- ---- ---------- -- ----- ----- ---------- ---------- ----  
+TERMDESC    STARTDATE ENDDATE                                                   
+----------- --------- ---------                                                 
+      1208 CIS253 21 SP03        123 TR 09:00 10:30         14         40 SP03  
+Spring 2003 03-APR-27 03-AUG-15                                                 
+                                                                                
+      1209 CIS253 11 SP03        111 MW 09:00 10:30         18         40 SP03  
+Spring 2003 03-APR-27 03-AUG-15                                                 
+                                                                                
+      1205 CIS265 01 SP03            MW 09:00 10:30         14         35 SP03  
+Spring 2003 03-APR-27 03-AUG-15                                                 
+                                                                                
+
+SQL> 
+SQL> 
+SQL> --d)
+SQL> select * from location where roomtype = 'C';
+
+    ROOMID BUILDIN ROO   CAPACITY R                                             
+---------- ------- --- ---------- -                                             
+        15 Nehru   301         50 C                                             
+        16 Nehru   309         45 C                                             
+
+SQL> 
+SQL> 
+SQL> --e)
+SQL> create table SP03SECT
+  2  as
+  3  select courseid,section,facultyid,roomid from crssection where termid = 'SP03';
+
+Table created.
+
+SQL> 
+SQL> alter table SP03SECT add CONSTRAINT  pk_courseid_section primary key (courseid,section);
+
+Table altered.
+
+SQL> alter table SP03SECT add constraint  fk_facultyId foreign key (facultyId) references faculty(facultyid);
+
+Table altered.
+
+SQL> alter table SP03SECT add constraint fk_room foreign key (roomid) references location(roomid);
+
+Table altered.
+
+SQL> 
+SQL> 
+SQL> select * from SP03SECT
+  2  
+SQL> 
+SQL> --(f)
+SQL> delete from SP03SECT where facultyid = (select facultyid from faculty where name = 'Mobley');
+
+2 rows deleted.
+
+SQL> 
+SQL> select * from SP03SECT
+  2  
+SQL> --(g)
+SQL> select * from faculty f where not exists (select * from SP03SECT sp where sp.facultyid = f.facultyid);
+
+ FACULTYID NAME                ROOMID PHO     DEPTID                            
+---------- --------------- ---------- --- ----------                            
+       222 Williams                20 533          2                            
+       555 Chang                   17 587          5                            
+       444 Rivera                  21 544          4                            
+       345 Sen                     12 579          3                            
+       123 Mobley                  11 529          1                            
+       235 Vajpayee                12 577          2                            
+       333 Collins                 17 599          3                            
+
+7 rows selected.
+
+SQL> 

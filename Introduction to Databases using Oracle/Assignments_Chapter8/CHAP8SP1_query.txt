@@ -61,10 +61,17 @@ select * from dependent where employeeid in (select employeeid from employee whe
 
 
 --(l)
-select * from employee where employeeid not in (select employeeid from dependent);
+select employeeid from employee
+minus 
+select employeeid from dependent;
 
 
 --(m)
+select * from employee e1 where employeeid = 543 and salary = any(select avg(salary) from employee e2 where e1.deptid = e2.deptid  group by deptid);
+select * from employee e1 where employeeid = 543 and salary < any(select avg(salary) from employee e2 where e1.deptid = e2.deptid  group by deptid);
+select * from employee e1 where employeeid = 543 and salary > any(select avg(salary) from employee e2 where e1.deptid = e2.deptid  group by deptid);
+select * from employee e1 where employeeid = 543 and salary < all(select avg(salary) from employee e2 where e1.deptid = e2.deptid  group by deptid);
+select * from employee e1 where employeeid = 543 and salary > all(select avg(salary) from employee e2 where e1.deptid = e2.deptid  group by deptid);
 
 
 

@@ -21,3 +21,5 @@ ECHO Git
 M:\tmp\Git\Git-1.9.5-preview20141217.exe /silent
 
 msiexec /i M:\tmp\Git\GitExtensions-2.48.03-SetupComplete.msi /quiet /qb
+
+M:\tmp\Git\heroku-toolbelt.exe /silent

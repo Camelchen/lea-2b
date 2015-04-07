@@ -10,7 +10,7 @@ where rownum <=2 order by rownum;
 
 
 --c)
-select * from (select * from crssection where termid = 'SP03' order by maxcount desc) maxcrouse
+select * from (select * from crssection join term on crssection.termid = term.termid where term.termid = 'SP03' order by maxcount desc) maxcrouse
 where rownum <=3 order by rownum;
 
 
@@ -23,6 +23,11 @@ create table SP03SECT
 as
 select courseid,section,facultyid,roomid from crssection where termid = 'SP03';
 
+alter table SP03SECT add CONSTRAINT  pk_courseid_section primary key (courseid,section);
+alter table SP03SECT add constraint  fk_facultyId foreign key (facultyId) references faculty(facultyid);
+alter table SP03SECT add constraint fk_room foreign key (roomid) references location(roomid);
+
+
 select * from SP03SECT
 
 
@@ -32,4 +37,4 @@ delete from SP03SECT where facultyid = (select facultyid from faculty where name
 select * from SP03SECT
 
 --(g)
-select * from faculty where facultyid not in (select nvl(facultyid,0) from crssection where termid = 'SP03');
+select * from faculty f where not exists (select * from SP03SECT sp where sp.facultyid = f.facultyid);
